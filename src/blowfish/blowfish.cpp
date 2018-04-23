@@ -6,9 +6,9 @@
 // http://creativecommons.org/publicdomain/zero/1.0/
 //
 
-#include "blowfish.h"
-#include <cstring>
+#include "blowfish/blowfish.h"
 #include <algorithm>
+#include <cstring>
 
 #if !defined(__LITTLE_ENDIAN__) and !defined(__BIG_ENDIAN__)
 #define __LITTLE_ENDIAN__
@@ -19,7 +19,6 @@ namespace {
 union Converter32 {
   uint32_t bit_32;
   struct {
-
 #ifdef __LITTLE_ENDIAN__
     uint8_t byte3;
     uint8_t byte2;
@@ -229,8 +228,7 @@ unsigned long GCD(unsigned long larger, unsigned long smaller) {
 }
 
 size_t PKCS5PaddingLength(const std::vector<char> &data) {
-  if (data.empty())
-    return 0;
+  if (data.empty()) return 0;
   char length = data[data.size() - 1];
   if (length > 0 && length <= 8) {
     for (size_t i = 0; i < length; ++i) {
@@ -244,7 +242,7 @@ size_t PKCS5PaddingLength(const std::vector<char> &data) {
   return length;
 }
 
-}; // anonymous namespace
+};  // anonymous namespace
 
 Blowfish::Blowfish(const std::vector<char> &key) {
   SetKey(key.data(), key.size());

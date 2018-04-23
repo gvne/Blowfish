@@ -16,18 +16,18 @@
 #include <vector>
 
 class Blowfish {
-public:
+ public:
   Blowfish(const std::vector<char> &key);
   std::vector<char> Encrypt(const std::vector<char> &src) const;
   std::vector<char> Decrypt(const std::vector<char> &src) const;
 
-private:
+ private:
   void SetKey(const char *key, size_t byte_length);
   void EncryptBlock(uint32_t *left, uint32_t *right) const;
   void DecryptBlock(uint32_t *left, uint32_t *right) const;
   uint32_t Feistel(uint32_t value) const;
 
-private:
+ private:
   uint32_t pary_[18];
   uint32_t sbox_[4][256];
 };
