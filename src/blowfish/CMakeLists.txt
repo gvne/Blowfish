@@ -10,7 +10,7 @@ install(TARGETS blowfish
 )
 
 install(FILES
-  ${src}/blowfish.h
+  ${src}/blowfish/blowfish.h
   DESTINATION include/blowfish
 )
 
